@@ -12,6 +12,7 @@ const App = () => {
     QRCode.toDataURL(
       url,
       {
+        // errorCorrectionLevel: 'H',
         width: 800,
         margin: 2,
         color: {
@@ -28,17 +29,19 @@ const App = () => {
   };
   return (
     <div className="App">
-      <h1>QR Code Generator</h1>
-      <input
-        type="text"
-        placeholder="e.g. https://webadress.com"
-        value={url}
-        onChange={(e) => setUrl(e.target.value)}
-      />
-      <button onClick={GenerateQRCode}>Generate</button>
+        <h1>QR Code Generator</h1>
+      <div className="input-area">
+        <input
+          type="text"
+          placeholder="e.g. webadress.com"
+          value={url}
+          onChange={(e) => setUrl(e.target.value)}
+        />
+        <button onClick={GenerateQRCode}>Generate</button>
+      </div>
       {qrCode && (
         <>
-          <img src={qrCode} alt="" />
+          <img src={qrCode} alt="QR" />
           <a href={qrCode} download="qrcode.jpg">
             Download
           </a>
